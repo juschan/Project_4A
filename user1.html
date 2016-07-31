@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insurance Dashboard</title>
+<!-- If IE use the latest rendering engine -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
+<!-- Set the page to the width of the device and set the zoon level -->
+<meta name="viewport" content="width = device-width, initial-scale = 1">
+
+<!-- Get Boostrap 3.3.7 css-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<style>
+.jumbotron{
+    background-color:#49c2ff;
+    color:white;
+}
+/* Adds borders for tabs */
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.navbar-custom{
+    background-color: #49c2ff;
+    color: white !important;
+}
+
+.navbar-nav>li>a {
+    color: white !important;
+}
+
+.navbar-default .navbar-brand {
+    background-color: #49c2ff;
+    color: white !important;
+}
+
+
+.nav-tabs {
+    margin-bottom: 0;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="page-header"></div>
+
+<nav class="navbar navbar-default navbar-custom">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Insurance Dashboard</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <!--<ul class="nav navbar-nav">
+        <li><a href="#">Home<span class="sr-only">(current)</span></a></li>
+      </ul>-->
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">User Jonathon is logged in.</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Select User<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="user1.html">User 1</a></li>
+            <li><a href="user2.html">User 2</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="well well-sm">
+    <h4>Welcome Jonathon</h4>
+    <p>You have <span class="badge">2</span> Notifications</p>
+
+<br />
+
+
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#summary">Summary</a></li>
+  <li><a data-toggle="tab" href="#notifications">Notifications</a></li>
+  <li><a data-toggle="tab" href="#coverage">Coverage</a></li>
+  <li><a data-toggle="tab" href="#planning">Planning</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="summary" class="tab-pane fade in active">
+    <h3>Summary</h3>
+        <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Coverage</th>
+                    <th>Total Sum Assured</th>
+                    <th>Number of Products</th>
+                    <th>Annual Premiums</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Death</td>
+                    <td>$500,000</td>
+                    <td>3</td>
+                    <td>$300</td>
+                </tr>
+                <tr>
+                    <td>Personal Accident</td>
+                    <td>$1,000,000 (subject to T&C)</td>
+                    <td>1</td>
+                    <td>See SAF Plan</td>
+                </tr>
+                <tr>
+                    <td>Health</td>
+                    <td></td>
+                    <td>1</td>
+                    <td>See Medishield Plan</td>
+                </tr>
+                </tbody>
+            </table>
+  </div>
+  
+  <div id="notifications" class="tab-pane fade">
+    <h3>Notifications</h3>
+    <ul>
+        <li>Complete the financial planning activities. Click here</li>
+        <li>Arrange meeting with financial planner. </li>
+    </ul>
+  </div>
+  
+  <div id="coverage" class="tab-pane fade">
+    <h3>Coverage</h3>
+     <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Coverage</th>
+                    <th>Total Sum Assured</th>
+                    <th>Number of Products</th>
+                    <th>Annual Premiums</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Death</td>
+                    <td>$500,000</td>
+                    <td>3</td>
+                    <td>$300</td>
+                </tr>
+                <tr>
+                    <td>Personal Accident</td>
+                    <td>$1,000,000 (subject to T&C)</td>
+                    <td>1</td>
+                    <td>See SAF Plan</td>
+                </tr>
+                <tr>
+                    <td>Health</td>
+                    <td></td>
+                    <td>1</td>
+                    <td>See Medishield Plan</td>
+                </tr>
+                </tbody>
+            </table>
+  </div>
+
+
+  <div id="planning" class="tab-pane fade">
+    <h3>Planning</h3>
+    
+    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Estate Planning</h3>
+    </div>
+    <div class="panel-body">
+        <p>Will</p>
+        <p>Will Executor</p>
+        <p>Stated CPF Beneficiaries</p>
+        <p>Funeral Services</p>
+    </div>
+    </div>
+
+    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Disability/Mental Incapacity/</h3>
+    </div>
+    <div class="panel-body">
+        <p>Advanced Medical Directive</p>
+        <p>Power of Attorney</p>
+    </div>
+    </div>
+
+
+  </div>
+
+
+
+</div> <!-- closes tab contents-->
+
+</div> <!-- closes well -->
+
+
+</div> <!-- closes container -->
+
+
+<!-- Get jQuery 3.1.0-->
+<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</body>
+</html>
