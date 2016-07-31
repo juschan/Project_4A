@@ -11,4 +11,4 @@ The colour blue was chosen as part of the design to invoke security, trustworthi
 
 
 ##Project Status
-* 31/7/2016 - Create landing page with write-up. 
+* 31/7/2016 - Create landing page with write-up. Added user1.html content.
