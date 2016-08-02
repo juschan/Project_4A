@@ -73,14 +73,8 @@
       </ul>-->
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">User Jonathon is logged in.</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Select User<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="user1.html">User 1</a></li>
-            <li><a href="user2.html">User 2</a></li>
-          </ul>
-        </li>
+        <li><a href="#"><span class="badge">2</span> Notifications</a></li>
+        <li><a href="index.html">Logout</a></li>
       </ul>
 
     </div><!-- /.navbar-collapse -->
@@ -89,15 +83,14 @@
 
 <div class="well well-sm">
     <h4>Welcome Jonathon</h4>
-    <p>You have <span class="badge">2</span> Notifications</p>
 
 <br />
 
-
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#summary">Summary</a></li>
-  <li><a data-toggle="tab" href="#notifications">Notifications</a></li>
-  <li><a data-toggle="tab" href="#coverage">Coverage</a></li>
+  <li><a data-toggle="tab" href="#notifications"><span class="badge">2</span> Notifications</a></li>
+  <li><a data-toggle="tab" href="#payments">Payments</a></li>
+  <li><a data-toggle="tab" href="#details">Product Details</a></li>
   <li><a data-toggle="tab" href="#planning">Planning</a></li>
 </ul>
 
@@ -109,28 +102,32 @@
                 <tr>
                     <th>Coverage</th>
                     <th>Total Sum Assured</th>
-                    <th>Number of Products</th>
                     <th>Annual Premiums</th>
+                    <th>Action</th>
+                    <th>Remarks</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>Death</td>
-                    <td>$500,000</td>
-                    <td>3</td>
+                    <td>$250,000</td>
                     <td>$300</td>
+                    <td><button class="btn">Terminal Illness Claim</button></td>
+                    <td>2 Policies with Terminal Illness claim; 2 Term Policies are extendable.</td>
                 </tr>
                 <tr>
                     <td>Personal Accident</td>
-                    <td>$1,000,000 (subject to T&C)</td>
-                    <td>1</td>
-                    <td>See SAF Plan</td>
+                    <td>$150,000 (subject to T&C)</td>
+                    <td>N/A</td>
+                    <td><button class="btn">Personal Accident Claim</button></td>
+                    <td>Premiums paid by Ministry of Defence</td>
                 </tr>
                 <tr>
                     <td>Health</td>
-                    <td></td>
-                    <td>1</td>
-                    <td>See Medishield Plan</td>
+                    <td><a href="https://www.moh.gov.sg/content/moh_web/medishield-life/about-medishield-life/medishield-life-benefits.html">Benefits</a></td>
+                    <td>$66</td>
+                    <td><button class="btn">Hospitalisation Claim</button></td>
+                    <td>Premiums deducted from Medisave [31/5/2016]</td>
                 </tr>
                 </tbody>
             </table>
@@ -138,79 +135,156 @@
   
   <div id="notifications" class="tab-pane fade">
     <h3>Notifications</h3>
-    <ul>
-        <li>Complete the financial planning activities. Click here</li>
-        <li>Arrange meeting with financial planner. </li>
-    </ul>
+        <ul class="list-group">
+        <li class="list-group-item"><span class="label label-danger">New!</span> Reminder - Outstanding Premium Payment (Insurer X Policy Y44513): Due 31st May 2016 [31/7/2016]</li>
+        <li class="list-group-item"><span class="label label-danger">New!</span> Travel Claim approved (Insurer Y Policy K44256): $5000 paid to bank account P24435 [31/7/2016]</li> 
+        <li class="list-group-item">PA Claim Form Received (Insurer Y, Policy K44256) [14/7/2016] </li>
+        <li class="list-group-item">Reminder - Outstanding Premium Payment (Insurer X Policy Y44513): Due 31st May 2016 [31/6/2016]</li>  
+        </ul>
   </div>
   
-  <div id="coverage" class="tab-pane fade">
-    <h3>Coverage</h3>
-     <table class="table table-hover">
+  <div id="payments" class="tab-pane fade">
+    <h3>Payments</h3>
+    <br />
+    <h4>Payments Made</h4>
+        <table class="table table-hover table-condensed">
                 <thead>
                 <tr>
-                    <th>Coverage</th>
-                    <th>Total Sum Assured</th>
-                    <th>Number of Products</th>
-                    <th>Annual Premiums</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                    <th>Remarks</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>Death</td>
-                    <td>$500,000</td>
-                    <td>3</td>
-                    <td>$300</td>
-                </tr>
-                <tr>
-                    <td>Personal Accident</td>
-                    <td>$1,000,000 (subject to T&C)</td>
-                    <td>1</td>
-                    <td>See SAF Plan</td>
-                </tr>
-                <tr>
-                    <td>Health</td>
+                    <td>30/4/2016</td>
+                    <td>$20</td>
+                    <td>Monthly Premiums(Insurer A Policy A236413)</td>
                     <td></td>
-                    <td>1</td>
-                    <td>See Medishield Plan</td>
+                </tr>
+                <tr>
+                    <td>31/3/2016</td>
+                    <td>$20</td>
+                    <td>Monthly Premiums(Insurer A Policy A236413)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>29/2/2016</td>
+                    <td>$20</td>
+                    <td>Monthly Premiums(Insurer A Policy A236413)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>31/1/2016</td>
+                    <td>$20</td>
+                    <td>Monthly Premiums(Insurer A Policy A236413)</td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+
+    <h4>Payments Received</h4>
+        <table class="table table-hover table-condensed">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                    <th>Remarks</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>31/7/2016</td>
+                    <td>$5,000</td>
+                    <td>PA Claim approved (Insurer Y Policy K44256)</td>
+                    <td>Paid to bank account P24435</td>
                 </tr>
                 </tbody>
             </table>
   </div>
 
+    <div id="details" class="tab-pane fade">
+    <h3>Product Details</h3>
+        <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Coverage</th>
+                    <th>SAF Scheme - Term Product (Insurer A; Policy A23641; Group; Start Date: 1/1/2013)</th>
+                    <th>Term Product (Insurer B; Policy B256641; DPI; Start Date: 1/1/2012)</th>
+                    <th>Term Product (Insurer C; Policy C668721; DPI; Start Date: 1/1/2014)</th>
+                    <th>PA Product (Insurer Y, Policy K44256; Agent A223; Start Date: 1/1/2015)</th>
+                    <th>Medishield LIfe</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Death</td>
+                    <td>$150,000</td>
+                    <td>$25,000</td>
+                    <td>$25,000</td>
+                    <td>$50,000</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Personal Accident</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>$150,000 (subj. to T&C)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Health</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="https://www.moh.gov.sg/content/moh_web/medishield-life/about-medishield-life/medishield-life-benefits.html">Benefits</a></td>
+                </tr>
+                </tbody>
+            </table>
+  </div>
 
   <div id="planning" class="tab-pane fade">
     <h3>Planning</h3>
-    
-    <div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">Estate Planning</h3>
-    </div>
-    <div class="panel-body">
-        <p>Will</p>
-        <p>Will Executor</p>
-        <p>Stated CPF Beneficiaries</p>
-        <p>Funeral Services</p>
-    </div>
-    </div>
 
-    <div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">Disability/Mental Incapacity</h3>
-    </div>
-    <div class="panel-body">
-        <p>Advanced Medical Directive</p>
-        <p>Power of Attorney</p>
-    </div>
-    </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel" id="panel1">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                <a data-toggle="collapse" data-target="#estate_planning" href="#estate_planning" class="collapsed">Estate Planning</a></h4>
+                </div>
+                <div id="estate_planning" class="panel-collapse collapse">
+                    <div class="panel-body">
+                       <ul>
+                        <li>Will - Last updated 31/7/2016.</li>
+                        <li>Legal Firm - Tan and Tan Solicitors</li>
+                        <li>Will Executor - Mr Tan Heng Liao (Tel: 94457283)</li>
+                        <li>CPF Beneficiaries - Last updated 31/5/2015</li>
+                        <li>Funeral Services - Prepaid. Contact L&C Funeral Services (Tel: 62244664)</li>
+                       </ul>
+                    </div>
+                </div>
+             </div>
 
-
-  </div>
-
-
+            <div class="panel" id="panel2">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                <a data-toggle="collapse" data-target="#disability" href="#disability" class="collapsed">Disability and Mental Incapacity</a></h4>
+                </div>
+                <div id="disability" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>Advanced Medical Directive - <a href="https://www.moh.gov.sg/content/dam/moh_web/Forms/FORM1AMD(270905).pdf">Uploaded Form</a> - Last Updated 31/12/2014</p>
+                        <p>Power of Attorney - Mrs Lim Chew Mei (Tel 88234983)</p>
+                    </div>
+                </div>
+            </div>
+         </div><!--close accordion -->
+     </div><!--close planning-->
 
 </div> <!-- closes tab contents-->
-
 </div> <!-- closes well -->
 
 
