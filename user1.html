@@ -141,44 +141,22 @@
         </ul>
   </div>
   
-  <div id="payments" class="tab-pane fade">
+  <div id="payments" class="tab-pane fade" ng-controller="PaymentController as Payment" >
     <h3>Payments</h3>
     <br />
     <h4>Payments Made</h4>
         <table class="table table-hover table-condensed">
                 <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Description</th>
-                    <th>Remarks</th>
+                    <th ng-repeat="heading in Payment.headings">{{ heading }}</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>30/4/2016</td>
-                    <td>$20</td>
-                    <td>Monthly Premiums(Insurer A Policy A236413)</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>31/3/2016</td>
-                    <td>$20</td>
-                    <td>Monthly Premiums(Insurer A Policy A236413)</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>29/2/2016</td>
-                    <td>$20</td>
-                    <td>Monthly Premiums(Insurer A Policy A236413)</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>31/1/2016</td>
-                    <td>$20</td>
-                    <td>Monthly Premiums(Insurer A Policy A236413)</td>
-                    <td></td>
-                </tr>
+                <tr ng-repeat="paymentMade in Payment.Made">
+                    <td>{{ paymentMade.date}}</td>
+                    <td>{{ paymentMade.amount | currency}}</td>
+                    <td>{{ paymentMade.description}}</td>
+                    <td>{{ paymentMade.remarks}}</td>
                 </tbody>
             </table>
 
@@ -186,19 +164,16 @@
         <table class="table table-hover table-condensed">
                 <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Description</th>
-                    <th>Remarks</th>
+                    <th ng-repeat="heading in Payment.headings">{{ heading }}</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>31/7/2016</td>
-                    <td>$5,000</td>
-                    <td>PA Claim approved (Insurer Y Policy K44256)</td>
-                    <td>Paid to bank account P24435</td>
-                </tr>
+                <tr ng-repeat="paymentReceived in Payment.Received">
+                    <td>{{ paymentReceived.date}}</td>
+                    <td>{{ paymentReceived.amount | currency}}</td>
+                    <td>{{ paymentReceived.description}}</td>
+                    <td>{{ paymentReceived.remarks}}</td>
+                </tbody>
                 </tbody>
             </table>
   </div>
@@ -312,6 +287,22 @@
              {status:0, content:"Reminder - Outstanding Premium Payment (Insurer X Policy Y44513): Due 31st May 2016 [31/6/2016]"} 
          ];
      })//close Notification controller
+
+
+    app.controller('PaymentController', function($rootScope){
+         var Payment = this;
+         Payment.headings = ['Date', 'Amount', 'Description', 'Remarks'];
+         Payment.Made = [
+             {date:'30/4/2016', amount:20, description:'Monthly Premiums(Insurer A Policy A236413)', remarks:''},
+             {date:'31/3/2016', amount:20, description:'Monthly Premiums(Insurer A Policy A236413)', remarks:''},
+             {date:'29/2/2016', amount:20, description:'Monthly Premiums(Insurer A Policy A236413)', remarks:''},
+             {date:'31/1/2016', amount:20, description:'Monthly Premiums(Insurer A Policy A236413)', remarks:''} 
+         ];
+        Payment.Received = [
+             {date:'31/7/2016', amount:5000, description:'PA Claim approved (Insurer Y Policy K44256)', remarks:'Paid to bank account P24435'} 
+         ];
+
+     })//close Payment controller
 
 </script> 
 
