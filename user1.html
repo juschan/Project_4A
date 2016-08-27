@@ -51,7 +51,7 @@
 </style>
 
 </head>
-<body ng-app="CoverApp" ng-controller="CoverController as Coverage">
+<body ng-app="CoverApp">
 
 <div class="container">
 
@@ -133,11 +133,11 @@
             </table>
   </div>
   
-  <div id="notifications" class="tab-pane fade">
+  <div id="notifications" class="tab-pane fade" ng-controller="NotificationController as Notification">
     <h3>Notifications</h3>
         <ul class="list-group">
-        <li class="list-group-item" ng-repeat="ntfn in Coverage.notifications">
-            <span class="label label-danger">{{ Coverage.displayStatus[ntfn.status]}}</span> {{ntfn.content}}</li>
+        <li class="list-group-item" ng-repeat="ntfn in Notification.list">
+            <span class="label label-danger">{{ Notification.displayStatus[ntfn.status]}}</span> {{ntfn.content}}</li>
         </ul>
   </div>
   
@@ -302,17 +302,16 @@
 <script>
     var app = angular.module('CoverApp',[]);
 
-     app.controller('CoverController', function($rootScope){
-         var Coverage = this;
-         Coverage.displayStatus = ['', 'New!'];
-         Coverage.notifications = [
+     app.controller('NotificationController', function($rootScope){
+         var Notification = this;
+         Notification.displayStatus = ['', 'New!'];
+         Notification.list = [
              {status:1, content:"Reminder - Outstanding Premium Payment (Insurer X Policy Y44513): Due 31st May 2016 [31/7/2016]"},
              {status:1, content:"Travel Claim approved (Insurer Y Policy K44256): $5000 paid to bank account P24435 [31/7/2016]"},
              {status:0, content:"PA Claim Form Received (Insurer Y, Policy K44256) [14/7/2016]"},
              {status:0, content:"Reminder - Outstanding Premium Payment (Insurer X Policy Y44513): Due 31st May 2016 [31/6/2016]"} 
          ];
-        
-     })//close angular controller
+     })//close Notification controller
 
 </script> 
 
