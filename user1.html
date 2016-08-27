@@ -136,7 +136,8 @@
   <div id="notifications" class="tab-pane fade">
     <h3>Notifications</h3>
         <ul class="list-group">
-        <li class="list-group-item" ng-repeat="ntfn in Coverage.notifications">{{ntfn.content}}</li>
+        <li class="list-group-item" ng-repeat="ntfn in Coverage.notifications">
+            <span class="label label-danger">{{ Coverage.displayStatus[ntfn.status]}}</span> {{ntfn.content}}</li>
         </ul>
   </div>
   
@@ -303,7 +304,7 @@
 
      app.controller('CoverController', function($rootScope){
          var Coverage = this;
-         //Coverage.x = [0, "<span class="label label-danger">New!</span>"];
+         Coverage.displayStatus = ['', 'New!'];
          Coverage.notifications = [
              {status:1, content:"Reminder - Outstanding Premium Payment (Insurer X Policy Y44513): Due 31st May 2016 [31/7/2016]"},
              {status:1, content:"Travel Claim approved (Insurer Y Policy K44256): $5000 paid to bank account P24435 [31/7/2016]"},
