@@ -51,7 +51,7 @@
 </style>
 
 </head>
-<body>
+<body ng-app="CoverApp" ng-controller="CoverController as Coverage">
 
 <div class="container">
 
@@ -92,7 +92,7 @@
 
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#summary">Summary</a></li>
-  <li><a data-toggle="tab" href="#notifications"><span class="badge">2</span> Notifications</a></li>
+  <li><a data-toggle="tab" href="#notifications">Notifications</a></li>
   <li><a data-toggle="tab" href="#payments">Payments</a></li>
   <li><a data-toggle="tab" href="#details">Product Details</a></li>
   <li><a data-toggle="tab" href="#planning">Planning</a></li>
@@ -136,10 +136,7 @@
   <div id="notifications" class="tab-pane fade">
     <h3>Notifications</h3>
         <ul class="list-group">
-        <li class="list-group-item"><span class="label label-danger">New!</span> Reminder - Outstanding Premium Payment (Insurer X Policy Y44513): Due 31st May 2016 [31/7/2016]</li>
-        <li class="list-group-item"><span class="label label-danger">New!</span> Travel Claim approved (Insurer Y Policy K44256): $5000 paid to bank account P24435 [31/7/2016]</li> 
-        <li class="list-group-item">PA Claim Form Received (Insurer Y, Policy K44256) [14/7/2016] </li>
-        <li class="list-group-item">Reminder - Outstanding Premium Payment (Insurer X Policy Y44513): Due 31st May 2016 [31/6/2016]</li>  
+        <li class="list-group-item" ng-repeat="ntfn in Coverage.notifications">{{ntfn.content}}</li>
         </ul>
   </div>
   
@@ -296,6 +293,27 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js"></script> 
+
+<!--Angular 1 code goes here-->
+<script>
+    var app = angular.module('CoverApp',[]);
+
+     app.controller('CoverController', function($rootScope){
+         var Coverage = this;
+         //Coverage.x = [0, "<span class="label label-danger">New!</span>"];
+         Coverage.notifications = [
+             {status:1, content:"Reminder - Outstanding Premium Payment (Insurer X Policy Y44513): Due 31st May 2016 [31/7/2016]"},
+             {status:1, content:"Travel Claim approved (Insurer Y Policy K44256): $5000 paid to bank account P24435 [31/7/2016]"},
+             {status:0, content:"PA Claim Form Received (Insurer Y, Policy K44256) [14/7/2016]"},
+             {status:0, content:"Reminder - Outstanding Premium Payment (Insurer X Policy Y44513): Due 31st May 2016 [31/6/2016]"} 
+         ];
+        
+     })//close angular controller
+
+</script> 
 
 </body>
 </html>
