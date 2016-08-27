@@ -94,41 +94,25 @@
   <li class="active"><a data-toggle="tab" href="#summary">Summary</a></li>
   <li><a data-toggle="tab" href="#notifications">Notifications</a></li>
   <li><a data-toggle="tab" href="#payments">Payments</a></li>
-  <li><a data-toggle="tab" href="#details">Product Details</a></li>
-  <li><a data-toggle="tab" href="#planning">Planning</a></li>
+  <li><a data-toggle="tab" href="#products">Product Details</a></li>
+  <li><a data-toggle="tab" href="#personal">Personal Details</a></li>
 </ul>
 
 <div class="tab-content">
-  <div id="summary" class="tab-pane fade in active">
+  <div id="summary" class="tab-pane fade in active" ng-controller="SummaryController as Summary">
     <h3>Summary</h3>
         <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>Coverage</th>
-                    <th>Total Sum Assured</th>
-                    <th>Action</th>
-                    <th>Remarks</th>
+                    <th ng-repeat="heading in Summary.headings">{{ heading }}</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Death</td>
-                    <td>$250,000</td>
-                    <td><button class="btn">Claim</button></td>
-                    <td>2 Policies with Terminal Illness claim; 2 Term Policies are extendable.</td>
-                </tr>
-                <tr>
-                    <td>Personal Accident</td>
-                    <td>$150,000 (subject to T&C)</td>
-                    <td><button class="btn">Claim</button></td>
-                    <td>Premiums paid by Ministry of Defence</td>
-                </tr>
-                <tr>
-                    <td>Health</td>
-                    <td><a href="https://www.moh.gov.sg/content/moh_web/medishield-life/about-medishield-life/medishield-life-benefits.html">Benefits</a></td>
-                    <td></td>
-                    <td>Premiums deducted from Medisave [31/5/2016]</td>
-                </tr>
+                <tr ng-repeat="summary in Summary.list">
+                    <td>{{ summary.coverage}}</td>
+                    <td>{{ summary.TSA}}</td>
+                    <td><button class="btn" style='padding:0px;margin:0px;'>{{ Summary.actions[summary.action] }}</button></td>
+                    <td>{{ summary.remarks}}</td>
                 </tbody>
             </table>
   </div>
@@ -178,7 +162,7 @@
             </table>
   </div>
 
-    <div id="details" class="tab-pane fade">
+    <div id="products" class="tab-pane fade" ng-controller="ProductController as Product">
     <h3>Product Details</h3>
         <table class="table table-hover">
                 <thead>
@@ -220,8 +204,8 @@
             </table>
   </div>
 
-  <div id="planning" class="tab-pane fade">
-    <h3>Planning</h3>
+  <div id="personal" class="tab-pane fade">
+    <h3>Personal Details</h3>
 
         <div class="panel-group" id="accordion">
             <div class="panel" id="panel1">
@@ -276,6 +260,28 @@
 <!--Angular 1 code goes here-->
 <script>
     var app = angular.module('CoverApp',[]);
+
+     app.controller('ProductController', function($rootScope){
+         var Product = this;
+         Product.headings = ['Coverage', 'Total Sum Assured', 'Action', 'Remarks'];
+         Product.list = [
+             {coverage:'Death', TSA:'$250,000', action:1, remarks:'2 Policies with Terminal Illness claim; 2 Term Policies are extendable.'},
+             {coverage:'Personal Accident', TSA:'$150,000', action:1, remarks:'Premiums paid by Ministry of Defence'},
+             {coverage:'Health', TSA:'Benefits', action:0, remarks:'Premiums deducted from Medisave [31/5/2016].'}
+         ];
+     })//close Product controller
+
+
+     app.controller('SummaryController', function($rootScope){
+         var Summary = this;
+         Summary.headings = ['Coverage', 'Total Sum Assured', 'Action', 'Remarks'];
+         Summary.actions = ['', 'Claim']
+         Summary.list = [
+             {coverage:'Death', TSA:'$250,000', action:1, remarks:'2 Policies with Terminal Illness claim; 2 Term Policies are extendable.'},
+             {coverage:'Personal Accident', TSA:'$150,000', action:1, remarks:'Premiums paid by Ministry of Defence'},
+             {coverage:'Health', TSA:'Benefits', action:0, remarks:'Premiums deducted from Medisave [31/5/2016].'}
+         ];
+     })//close Summary controller
 
      app.controller('NotificationController', function($rootScope){
          var Notification = this;
