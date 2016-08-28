@@ -55,8 +55,6 @@
 
 <div class="container">
 
-<div class="page-header"></div>
-
 <nav class="navbar navbar-default navbar-custom">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -261,7 +259,7 @@
 <script>
     var app = angular.module('CoverApp',[]);
 
-     app.controller('ProductController', function($rootScope){
+     app.controller('ProductController', function(){
          var Product = this;
          Product.headings = ['Coverage', 'Total Sum Assured', 'Action', 'Remarks'];
          Product.list = [
@@ -272,7 +270,7 @@
      })//close Product controller
 
 
-     app.controller('SummaryController', function($rootScope){
+     app.controller('SummaryController', function(){
          var Summary = this;
          Summary.headings = ['Coverage', 'Total Sum Assured', 'Action', 'Remarks'];
          Summary.actions = ['', 'Claim']
@@ -283,7 +281,7 @@
          ];
      })//close Summary controller
 
-     app.controller('NotificationController', function($rootScope){
+     app.controller('NotificationController', function(){
          var Notification = this;
          Notification.displayStatus = ['', 'New!'];
          Notification.list = [
@@ -295,7 +293,7 @@
      })//close Notification controller
 
 
-    app.controller('PaymentController', function($rootScope){
+    app.controller('PaymentController', function(){
          var Payment = this;
          Payment.headings = ['Date', 'Amount', 'Description', 'Remarks'];
          Payment.Made = [
