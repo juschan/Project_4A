@@ -166,38 +166,26 @@
                 <thead>
                 <tr>
                     <th>Coverage</th>
-                    <th>SAF Scheme - Group Term Life (Insurer A; Scheme Y)</th>
-                    <th>Term Product (Insurer B; Policy B256641; DPI;)</th>
-                    <th>Term Product (Insurer C; Policy C668721; DPI;)</th>
-                    <th>Group Personal Accident (Insurer Y, Scheme X);)</th>
-                    <th>Medishield LIfe</th>
+                    <th ng-repeat="prd in Product.list">{{prd.name}}</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>Death</td>
-                    <td>$150,000</td>
-                    <td>$25,000</td>
-                    <td>$25,000</td>
-                    <td>$50,000</td>
-                    <td></td>
+                    <td ng-repeat="prd in Product.list">{{prd.death }}</td>
                 </tr>
                 <tr>
                     <td>Personal Accident</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>$150,000 (subj. to T&C)</td>
-                    <td></td>
+                    <td ng-repeat="prd in Product.list">{{prd.pa}}</td>
                 </tr>
                 <tr>
                     <td>Health</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><a href="https://www.moh.gov.sg/content/moh_web/medishield-life/about-medishield-life/medishield-life-benefits.html">Benefits</a></td>
-                </tr>
+                    <td ng-repeat="prd in Product.list">{{prd.health}}</td>
+                 </tr>
+                 <tr>
+                    <td>Remarks</td>
+                    <td ng-repeat="prd in Product.list">{{prd.remarks}}</td>
+                 </tr>
                 </tbody>
             </table>
   </div>
@@ -231,6 +219,7 @@
                 </div>
                 <div id="disability" class="panel-collapse collapse">
                     <div class="panel-body">
+                        <p>Advanced Care Plan Nominee - Mrs Lim Chew Mei (Tel 88234983) <a href="https://livingmatters.sg/advance-care-planning/about-acp/#">Info</a></p>
                         <p>Advanced Medical Directive - <a href="https://www.moh.gov.sg/content/dam/moh_web/Forms/FORM1AMD(270905).pdf">Uploaded Form</a> - Last Updated 31/12/2014</p>
                         <p>Power of Attorney - Mrs Lim Chew Mei (Tel 88234983)</p>
                     </div>
@@ -261,12 +250,19 @@
 
      app.controller('ProductController', function(){
          var Product = this;
-         Product.headings = ['Coverage', 'Total Sum Assured', 'Action', 'Remarks'];
-         Product.list = [
-             {coverage:'Death', TSA:'$250,000', action:1, remarks:'2 Policies with Terminal Illness claim; 2 Term Policies are extendable.'},
-             {coverage:'Personal Accident', TSA:'$150,000', action:1, remarks:'Premiums paid by Ministry of Defence'},
-             {coverage:'Health', TSA:'Benefits', action:0, remarks:'Premiums deducted from Medisave [31/5/2016].'}
-         ];
+
+         var product1= {name: "SAF Scheme - Term Life", insurer: "Insurer A", agent:"MINDEF", policyno:"A236413", scheme:"Group Term Life", 
+           death:"$150,000", pa:"", health:"", remarks:""};
+         var product2= {name: "Term Product", insurer: "Insurer B", agent:"DPI", policyno:"B456789", scheme:"", 
+           death:"$25,000", pa:"", health:"" , remarks:""};
+         var product3= {name: "Term Product", insurer: "Insurer C", agent:"Lim Min Chew, (No: 549123)", policyno:"C446553", scheme:"", 
+           death:"$25,000", pa:"", health:"" , remarks:""};
+         var product4= {name: "SAF Scheme - PA", insurer: "Insurer Y", channel:"", agent:"", policyno:"K44256", scheme:"Group Personal Accident", 
+           death:"", pa:"$150,000", health:"" , remarks:"See T&C for actual benefit coverage"};
+         var product5= {name: "Medishield Life", insurer: "", channel:"", agent:"", policyno:"", scheme:"", 
+           death:"", pa:"", health:"" , remarks:"See Medishield Health Benefits"};
+
+         Product.list = [ product1, product2, product3, product4, product5 ];
      })//close Product controller
 
 
