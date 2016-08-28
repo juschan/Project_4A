@@ -109,7 +109,7 @@
                 <tr ng-repeat="summary in Summary.list">
                     <td>{{ summary.coverage}}</td>
                     <td>{{ summary.TSA}}</td>
-                    <td><button class="btn" style='padding:0px;margin:0px;'>{{ Summary.actions[summary.action] }}</button></td>
+                    <td><button class="btn" style='padding:0px;margin:0px;' ng-click="Summary.update(summary.coverage)">{{ Summary.actions[summary.action] }}</button></td>
                     <td>{{ summary.remarks}}</td>
                 </tbody>
             </table>
@@ -194,7 +194,26 @@
     <h3>Personal Details</h3>
 
         <div class="panel-group" id="accordion">
+
             <div class="panel" id="panel1">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                <a data-toggle="collapse" data-target="#estate_planning" href="#contact" class="collapsed">Contact Details</a></h4>
+                </div>
+                <div id="estate_planning" class="panel-collapse collapse" ng-controller="ContactController as Contact">
+                    <div class="panel-body">
+                    <form ng-submit="Contact.update()">
+                       <p>Address: <input type="text" ng-model="Contact.address"></p>
+                       <p>Email: <input type="email" ng-model="Contact.email"></p>
+                       <p>Telephone: <input type="text" ng-model="Contact.tel"></p>
+                       <p>Mobile: <input type="text" ng-model="Contact.mobile"></p>
+                       <input type="submit">   
+                    </form>
+                    </div>
+                </div>
+             </div>          
+            
+            <div class="panel" id="panel2">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                 <a data-toggle="collapse" data-target="#estate_planning" href="#estate_planning" class="collapsed">Estate Planning</a></h4>
@@ -212,7 +231,7 @@
                 </div>
              </div>
 
-            <div class="panel" id="panel2">
+            <div class="panel" id="panel3">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                 <a data-toggle="collapse" data-target="#disability" href="#disability" class="collapsed">Disability and Mental Incapacity</a></h4>
@@ -246,7 +265,45 @@
 
 <!--Angular 1 code goes here-->
 <script>
+
     var app = angular.module('CoverApp',[]);
+
+    app.factory('messages', function(){
+        var messages = {};
+
+        messages.list = [
+             {status:1, content:"Reminder - Outstanding Premium Payment (Insurer X Policy Y44513): Due 31st May 2016 [31/7/2016]"},
+             {status:1, content:"Travel Claim approved (Insurer Y Policy K44256): $5000 paid to bank account P24435 [31/7/2016]"},
+             {status:0, content:"PA Claim Form Received (Insurer Y, Policy K44256) [14/7/2016]"},
+             {status:0, content:"Reminder - Outstanding Premium Payment (Insurer X Policy Y44513): Due 31st May 2016 [31/6/2016]"} 
+         ];
+
+        messages.add = function(message){
+            messages.list.unshift({status:1, content: message});
+        };
+
+        return messages;
+     });
+
+
+     app.controller('ContactController', function(messages){
+         var Contact = this;
+         
+         Contact.address = "Blk 123, Toa Payoh Ave 2, #10-10, S(423445)";
+         Contact.email = "jonathon@gmail.com";
+         Contact.tel = "67789456";
+         Contact.mobile = "95461237";
+         
+         Contact.update = function() {
+             alert("Change of Personal Contact Info Sent to Affected Parties - See Notifications");
+            // update notifications!
+             var updateString = "Update: " + Contact.address + "; " +  Contact.email + "; " +
+             Contact.tel + "; " + Contact.mobile;
+             messages.add(updateString);
+         }
+
+     })//close Contact controller
+
 
      app.controller('ProductController', function(){
          var Product = this;
@@ -266,7 +323,7 @@
      })//close Product controller
 
 
-     app.controller('SummaryController', function(){
+     app.controller('SummaryController', function(messages){
          var Summary = this;
          Summary.headings = ['Coverage', 'Total Sum Assured', 'Action', 'Remarks'];
          Summary.actions = ['', 'Claim']
@@ -275,17 +332,18 @@
              {coverage:'Personal Accident', TSA:'$150,000', action:1, remarks:'Premiums paid by Ministry of Defence'},
              {coverage:'Health', TSA:'Benefits', action:0, remarks:'Premiums deducted from Medisave [31/5/2016].'}
          ];
+
+         Summary.update = function(cvg) {
+             alert("Inform Insurer of " + cvg + "-related claim");
+             var updateString = "Notice: Inform insurer of " + cvg + "-related claim";
+             messages.add(updateString);
+         }
      })//close Summary controller
 
-     app.controller('NotificationController', function(){
+     app.controller('NotificationController', function(messages){
          var Notification = this;
          Notification.displayStatus = ['', 'New!'];
-         Notification.list = [
-             {status:1, content:"Reminder - Outstanding Premium Payment (Insurer X Policy Y44513): Due 31st May 2016 [31/7/2016]"},
-             {status:1, content:"Travel Claim approved (Insurer Y Policy K44256): $5000 paid to bank account P24435 [31/7/2016]"},
-             {status:0, content:"PA Claim Form Received (Insurer Y, Policy K44256) [14/7/2016]"},
-             {status:0, content:"Reminder - Outstanding Premium Payment (Insurer X Policy Y44513): Due 31st May 2016 [31/6/2016]"} 
-         ];
+         Notification.list = messages.list
      })//close Notification controller
 
 
