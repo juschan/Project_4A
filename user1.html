@@ -166,7 +166,9 @@
                 <thead>
                 <tr>
                     <th>Coverage</th>
-                    <th ng-repeat="prd in Product.list">{{prd.name}}</th>
+                    <th ng-repeat="prd in Product.list"><a href="#" 
+                    title="Insurer: {{prd.insurer}} &#10 Policy Number: {{prd.policyno}} &#10 Agent: {{prd.agent}} &#10 Scheme: {{prd.scheme}}">
+                    {{prd.name}}</a></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -265,6 +267,10 @@
 
 <!--Angular 1 code goes here-->
 <script>
+
+    $( function() {
+      $( document ).tooltip();
+    } );
 
     var app = angular.module('CoverApp',[]);
 
