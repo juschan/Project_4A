@@ -88,9 +88,9 @@
 
 <br />
 
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs" ng-controller="NavController as Nav">
   <li class="active"><a data-toggle="tab" href="#summary">Summary</a></li>
-  <li><a data-toggle="tab" href="#notifications">{{msg}} Notifications</a></li>
+  <li><a data-toggle="tab" href="#notifications"><span style='color:red'>{{Nav.newMsgCount()}} New </span> Notifications</a></li>
   <li><a data-toggle="tab" href="#payments">Payments</a></li>
   <li><a data-toggle="tab" href="#products">Product Details</a></li>
   <li><a data-toggle="tab" href="#personal">Personal Details</a></li>
@@ -203,7 +203,7 @@
             <div class="panel" id="panel1">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                <a data-toggle="collapse" data-target="#estate_planning" href="#contact" class="collapsed">Contact Details</a></h4>
+                <a data-toggle="collapse" data-target="#contact" href="#contact" class="collapsed">Contact Details</a></h4>
                 </div>
                 <div id="contact" class="panel-collapse collapse" ng-controller="ContactController as Contact">
                     <div class="panel-body">
@@ -294,6 +294,22 @@
         return messages;
      });
 
+
+     app.controller('NavController', function(messages){
+         var Nav = this;
+
+         Nav.newMsgCount = function() {
+            var newCount=0;
+            var msgs=messages.list;
+            var msgLength=msgs.length;
+            console.log(msgs)
+            for(var i=0; i<msgLength; i++) {
+                newCount +=msgs[i].status;
+            }
+            return newCount;
+         }
+
+     })//close Contact controller
 
      app.controller('ContactController', function(messages){
          var Contact = this;
