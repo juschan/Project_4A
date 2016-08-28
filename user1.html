@@ -90,7 +90,7 @@
 
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#summary">Summary</a></li>
-  <li><a data-toggle="tab" href="#notifications">Notifications</a></li>
+  <li><a data-toggle="tab" href="#notifications">{{msg}} Notifications</a></li>
   <li><a data-toggle="tab" href="#payments">Payments</a></li>
   <li><a data-toggle="tab" href="#products">Product Details</a></li>
   <li><a data-toggle="tab" href="#personal">Personal Details</a></li>
@@ -167,7 +167,10 @@
                 <tr>
                     <th>Coverage</th>
                     <th ng-repeat="prd in Product.list"><a href="#" 
-                    title="Insurer: {{prd.insurer}} &#10 Policy Number: {{prd.policyno}} &#10 Agent: {{prd.agent}} &#10 Scheme: {{prd.scheme}}">
+                    title="Insurer: {{prd.insurer}} ;
+                    Policy Number: {{prd.policyno}} ;
+                    Agent: {{prd.agent}} ;
+                    Scheme: {{prd.scheme}} ;">
                     {{prd.name}}</a></th>
                 </tr>
                 </thead>
@@ -269,7 +272,7 @@
 <script>
 
     $( function() {
-      $( document ).tooltip();
+      $( "[title]" ).tooltip({ position: "top right", opacity: 0.7});
     } );
 
     var app = angular.module('CoverApp',[]);
